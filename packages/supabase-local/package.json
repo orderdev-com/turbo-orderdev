@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "supa_start": "supabase start",
-		"supa_stop": "supabase stop"
+    "supa_stop": "supabase stop"
   },
   "keywords": [],
   "author": "",

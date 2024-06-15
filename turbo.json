@@ -2,15 +2,16 @@
   "$schema": "https://turbo.build/schema.json",
   "tasks": {
     "build": {
-      "dependsOn": [
-        "^build"
-      ],
-      "outputs": [
-        ".svelte-kit/**",
-        ".vercel/**"
-      ]
+      "dependsOn": ["^build"],
+      "outputs": [".svelte-kit/**", ".vercel/**"]
     },
     "lint": {},
+    "supa_start": {
+      "cache": false
+    },
+    "supa_stop": {
+      "cache": false
+    },
     "dev": {
       "cache": false,
       "persistent": true

@@ -4,9 +4,7 @@
       "mode": "auto"
     }
   ],
-  "deno.enablePaths": [
-    "packages/supabase-local/supabase/functions"
-  ],
+  "deno.enablePaths": ["packages/supabase-local/supabase/functions"],
   "deno.lint": true,
   "deno.unstable": true,
   "[typescript]": {

@@ -3,9 +3,12 @@
   "tasks": {
     "build": {
       "dependsOn": ["^build"],
-      "outputs": [".svelte-kit/**", ".vercel/**"]
+      "outputs": [
+        ".astro/**",
+        ".svelte-kit/**", 
+        ".vercel/**"
+      ]
     },
-    "lint": {},
     "supa_start": {
       "cache": false
     },

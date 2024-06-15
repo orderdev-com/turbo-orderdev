@@ -1,3 +1,8 @@
 {
-  "recommendations": ["denoland.vscode-deno"]
+  "recommendations": [
+    "svelte.svelte-vscode",
+    "denoland.vscode-deno",
+    "astro-build.astro-vscode",
+    "moalamri.inline-fold"
+  ]
 }

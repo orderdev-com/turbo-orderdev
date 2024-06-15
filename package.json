@@ -1,26 +1,19 @@
 {
-  "private": true,
-  "scripts": {
-    "preinstall": "npx only-allow pnpm",
-    "dev": "dotenv -- turbo run supa_start && turbo run dev",
-    "supa_stop": "dotenv -- turbo run supa_stop",
-    "build": "dotenv -- turbo run build",
-    "lint": "dotenv -- turbo run lint",
-    "format": "prettier --write ."
-  },
-  "devDependencies": {
-    "@repo/eslint-config": "workspace:*",
-    "dotenv": "^16.4.5",
-    "dotenv-cli": "^7.4.2",
-    "eslint": "^8.57.0",
-    "prettier": "^3.2.5",
-    "prettier-plugin-astro": "^0.14.0",
-    "prettier-plugin-svelte": "^3.2.2",
-    "turbo": "^2.0.4"
-  },
-  "packageManager": "pnpm@8.15.6",
-  "engines": {
-    "node": ">=18"
-  },
-  "name": "with-svelte"
+	"private": true,
+	"scripts": {
+		"preinstall": "npx only-allow pnpm",
+		"dev": "dotenv -- turbo run supa_start && turbo run dev",
+		"supa_stop": "dotenv -- turbo run supa_stop",
+		"build": "dotenv -- turbo run build"
+	},
+	"devDependencies": {
+		"dotenv": "^16.4.5",
+		"dotenv-cli": "^7.4.2",
+		"turbo": "^2.0.4"
+	},
+	"packageManager": "pnpm@8.15.6",
+	"engines": {
+		"node": ">=18"
+	},
+	"name": "turbo-orderdev"
 }

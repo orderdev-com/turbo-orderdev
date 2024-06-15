@@ -4,10 +4,21 @@
       "mode": "auto"
     }
   ],
-  "deno.enablePaths": ["packages/supabase-local/supabase/functions"],
+  "editor.formatOnSave": true,
+  // "javascript.preferences.importModuleSpecifier": "project-relative",
+  "javascript.preferences.importModuleSpecifier": "non-relative",
+  "typescript.tsserver.experimental.enableProjectDiagnostics": true, // filter: !**/node_modules/**
+  // supabase
+  "deno.enablePaths": [
+    "packages/supabase-local/supabase/functions"
+  ],
   "deno.lint": true,
   "deno.unstable": true,
   "[typescript]": {
-    "editor.defaultFormatter": "denoland.vscode-deno"
-  }
+    "editor.defaultFormatter": "vscode.typescript-language-features"
+  },
+  // subabase
+  // "[typescript]": {
+  //   "editor.defaultFormatter": "denoland.vscode-deno"
+  // }
 }

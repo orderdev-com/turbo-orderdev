@@ -10,11 +10,7 @@
       "svelte": "./index.ts"
     }
   },
-  "scripts": {
-    "lint": "eslint ."
-  },
   "devDependencies": {
-    "@repo/eslint-config": "workspace:*",
     "svelte": "^4.2.12"
   }
 }

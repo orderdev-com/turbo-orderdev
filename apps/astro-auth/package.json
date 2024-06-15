@@ -10,11 +10,13 @@
 		"astro": "astro"
 	},
 	"dependencies": {
-		"@repo/ui": "workspace:*",
+		"@astrojs/check": "^0.7.0",
+		"@astrojs/node": "^8.3.0",
 		"@astrojs/svelte": "^5.5.0",
+		"@repo/ui": "workspace:*",
+		"@supabase/supabase-js": "^2.43.4",
 		"astro": "^4.10.2",
 		"svelte": "^4.2.18",
-		"@astrojs/check": "^0.7.0",
 		"typescript": "^5.4.5"
 	}
 }

@@ -28,3 +28,8 @@ yarn-error.log*
 
 # turbo
 .turbo
+
+
+.env.production
+.env*
+!.env.example

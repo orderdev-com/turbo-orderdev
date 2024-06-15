@@ -37,3 +37,9 @@ Site URL
 prod: "https://auth.orderdev.com"
 # local: "http://auth.orderdev.local:4321"
 ```
+
+local supabase OTP check with inbucket
+
+```
+http://localhost:54324/
+```

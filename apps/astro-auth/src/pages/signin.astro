@@ -12,9 +12,9 @@ if (accessToken && refreshToken) {
 ---
 
 <Layout title="Sign in">
-	<h1>The current URL is: {Astro.url}</h1>
+	<!-- <h1>The current URL is: {Astro.url}</h1>
 	<h1>The current URL pathname is: {Astro.url.pathname}</h1>
-	<h1>The current URL origin is: {Astro.url.origin}</h1>
+	<h1>The current URL origin is: {Astro.url.origin}</h1> -->
 
 	<h1>Sign in</h1>
 	<p>New here? <a href="/register">Create an account</a></p>
@@ -27,5 +27,15 @@ if (accessToken && refreshToken) {
 		<button value="google" name="provider" type="submit">
 			Sign in with Google
 		</button>
+	</form>
+
+	<h1>O-T-P</h1>
+	<!-- <p>New here? <a href="/register">Create an account</a></p> -->
+	<form action="/api/auth/signin-otp" method="post">
+		<label for="email">Email</label>
+		<input type="email" name="email" id="email" />
+		<!-- <label for="password">Password</label>
+		<input type="password" name="password" id="password" /> -->
+		<button type="submit">Get One time password</button>
 	</form>
 </Layout>

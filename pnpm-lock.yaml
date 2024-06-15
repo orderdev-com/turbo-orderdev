@@ -26,6 +26,9 @@ importers:
       '@astrojs/svelte':
         specifier: ^5.5.0
         version: 5.5.0(astro@4.10.2)(svelte@4.2.18)(typescript@5.4.5)(vite@5.3.1)
+      '@repo/ui':
+        specifier: workspace:*
+        version: link:../../packages/ui
       astro:
         specifier: ^4.10.2
         version: 4.10.2(typescript@5.4.5)
@@ -45,8 +48,8 @@ importers:
   packages/ui:
     devDependencies:
       svelte:
-        specifier: ^4.2.12
-        version: 4.2.12
+        specifier: ^4.2.18
+        version: 4.2.18
 
 packages:
 
@@ -3605,26 +3608,6 @@ packages:
       typescript: 5.4.5
     dev: false
 
-  /svelte@4.2.12:
-    resolution: {integrity: sha512-d8+wsh5TfPwqVzbm4/HCXC783/KPHV60NvwitJnyTA5lWn1elhXMNWhXGCJ7PwPa8qFUnyJNIyuIRt2mT0WMug==}
-    engines: {node: '>=16'}
-    dependencies:
-      '@ampproject/remapping': 2.3.0
-      '@jridgewell/sourcemap-codec': 1.4.15
-      '@jridgewell/trace-mapping': 0.3.25
-      '@types/estree': 1.0.5
-      acorn: 8.11.3
-      aria-query: 5.3.0
-      axobject-query: 4.0.0
-      code-red: 1.0.4
-      css-tree: 2.3.1
-      estree-walker: 3.0.3
-      is-reference: 3.0.2
-      locate-character: 3.0.0
-      magic-string: 0.30.8
-      periscopic: 3.1.0
-    dev: true
-
   /svelte@4.2.18:
     resolution: {integrity: sha512-d0FdzYIiAePqRJEb90WlJDkjUEx42xhivxN8muUBmfZnP+tzUgz12DJ2hRJi8sIHCME7jeK1PTMgKPSfTd8JrA==}
     engines: {node: '>=16'}
@@ -3643,7 +3626,6 @@ packages:
       locate-character: 3.0.0
       magic-string: 0.30.8
       periscopic: 3.1.0
-    dev: false
 
   /tar@7.2.0:
     resolution: {integrity: sha512-hctwP0Nb4AB60bj8WQgRYaMOuJYRAPMGiQUAotms5igN8ppfQM+IvjQ5HcKu1MaZh2Wy2KWVTe563Yj8dfc14w==}

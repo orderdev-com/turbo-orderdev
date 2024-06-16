@@ -5,10 +5,11 @@ const user = Astro.locals.user;
 {
 	user ? (
 		<div>
-			<h1>Welcome, {user.email}!</h1>
 			<form action="/api/auth/signout">
+				{user.email}
 				<button type="submit">Sign out</button>
 			</form>
+			<hr />
 		</div>
 	) : (
 		<h1>Welcome, guest!</h1>

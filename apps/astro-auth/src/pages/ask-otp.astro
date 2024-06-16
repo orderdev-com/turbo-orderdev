@@ -1,11 +1,15 @@
 ---
 import Layout from "../layouts/Layout.astro";
-const { cookies } = Astro;
+const { cookies, redirect } = Astro;
 
 const otpEmail = cookies.get("otp-email");
 cookies.delete("otp-email", {
 	path: "/",
 });
+
+if (Astro.locals.user) {
+	return redirect("/");
+}
 ---
 
 <Layout title="Verify One-Time-Password">

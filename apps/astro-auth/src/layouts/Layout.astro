@@ -1,1 +1,17 @@
+---
+const user = Astro.locals.user;
+---
+
+{
+	user ? (
+		<div>
+			<h1>Welcome, {user.email}!</h1>
+			<form action="/api/auth/signout">
+				<button type="submit">Sign out</button>
+			</form>
+		</div>
+	) : (
+		<h1>Welcome, guest!</h1>
+	)
+}
 <slot />

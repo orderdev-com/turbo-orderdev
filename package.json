@@ -3,6 +3,7 @@
 	"scripts": {
 		"preinstall": "npx only-allow pnpm",
 		"dev": "dotenv -- turbo run supa_start && turbo run dev",
+		"supa_start": "dotenv -- turbo run supa_start",
 		"supa_stop": "dotenv -- turbo run supa_stop",
 		"build": "dotenv -- turbo run build"
 	},

@@ -7,7 +7,7 @@
   "editor.formatOnSave": true,
   // "javascript.preferences.importModuleSpecifier": "project-relative",
   "javascript.preferences.importModuleSpecifier": "non-relative",
-  "typescript.tsserver.experimental.enableProjectDiagnostics": true, // filter: !**/node_modules/**
+  "typescript.tsserver.experimental.enableProjectDiagnostics": false, // filter: !**/node_modules/**
   // supabase
   "deno.enablePaths": [
     "packages/supabase-local/supabase/functions"

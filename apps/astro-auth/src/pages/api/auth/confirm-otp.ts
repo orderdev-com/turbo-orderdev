@@ -1,8 +1,8 @@
 import type { APIRoute } from "astro";
-import { supabase } from "../../../lib/supabase";
+// import { supabase } from "../../../lib/supabase";
 import type { Provider } from "@supabase/supabase-js";
 
-export const POST: APIRoute = async ({ request, cookies, redirect, url }) => {
+export const POST: APIRoute = async ({ request, cookies, redirect, url, locals }) => {
     const formData = await request.formData();
     const email = formData.get("email")?.toString();
     const password = formData.get("password")?.toString();
@@ -16,7 +16,7 @@ export const POST: APIRoute = async ({ request, cookies, redirect, url }) => {
     const {
         data,
         error,
-    } = await supabase.auth.verifyOtp({
+    } = await locals.supabase.auth.verifyOtp({
         email,
         token: password,
         type: 'email',
@@ -27,12 +27,15 @@ export const POST: APIRoute = async ({ request, cookies, redirect, url }) => {
         return new Response(error.message, { status: 500 });
     }
 
-    const { access_token, refresh_token } = data.session;
+    const { access_token, refresh_token } = data.session || {};
+    if (!access_token || !refresh_token) {
+        return new Response("Invalid OTP", { status: 400 });
+    }
     cookies.set("sb-access-token", access_token, {
         path: "/",
     });
     cookies.set("sb-refresh-token", refresh_token, {
         path: "/",
     });
-    return redirect("/dashboard");
+    return redirect("/");
 };

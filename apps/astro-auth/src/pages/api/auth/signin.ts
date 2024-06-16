@@ -1,8 +1,8 @@
 import type { APIRoute } from "astro";
-import { supabase } from "../../../lib/supabase";
+// import { supabase } from "../../../lib/supabase";
 import type { Provider } from "@supabase/supabase-js";
 
-export const POST: APIRoute = async ({ request, cookies, redirect, url }) => {
+export const POST: APIRoute = async ({ request, cookies, redirect, url, locals }) => {
     const formData = await request.formData();
     const email = formData.get("email")?.toString();
     const password = formData.get("password")?.toString();
@@ -15,10 +15,10 @@ export const POST: APIRoute = async ({ request, cookies, redirect, url }) => {
     ];
 
     if (provider && validProviders.includes(provider)) {
-        const { data, error } = await supabase.auth.signInWithOAuth({
+        const { data, error } = await locals.supabase.auth.signInWithOAuth({
             provider: provider as Provider,
             options: {
-                redirectTo: `${url.origin}/api/auth/callback`
+                redirectTo: `${url.origin}`
             },
         });
 
@@ -33,7 +33,7 @@ export const POST: APIRoute = async ({ request, cookies, redirect, url }) => {
         return new Response("Email and password are required", { status: 400 });
     }
 
-    const { data, error } = await supabase.auth.signInWithPassword({
+    const { data, error } = await locals.supabase.auth.signInWithPassword({
         email,
         password,
     });
@@ -49,5 +49,5 @@ export const POST: APIRoute = async ({ request, cookies, redirect, url }) => {
     cookies.set("sb-refresh-token", refresh_token, {
         path: "/",
     });
-    return redirect("/dashboard");
+    return redirect("/");
 };

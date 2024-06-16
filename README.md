@@ -6,6 +6,7 @@ The repo is built using the Turborepo monorepo tool.
 add hosts file entries
 
 ```
+127.0.0.1 api.orderdev.local
 127.0.0.1 auth.orderdev.local
 127.0.0.1 restaurant.orderdev.local
 ```

@@ -1,16 +1,34 @@
 ---
 import Layout from "../layouts/Layout.astro";
-// const { redirect } = Astro;
-// if (!Astro.locals.user) {
-// 	return redirect("/signin");
-// }
-// const email = Astro.locals.user?.email || "Guest";
+const user = Astro.locals.user;
 ---
 
 <Layout title="index">
-	<!-- <h1>Welcome {email}</h1>
-	<p>We are happy to see you here</p>
-	<form action="/api/auth/signout">
-		<button type="submit">Sign out</button>
-	</form> -->
+	{
+		user ? (
+			<div>
+				<form action="/api/auth/signout">
+					{user.email}
+					<button type="submit">Sign out</button>
+				</form>
+			</div>
+		) : (
+			<div>
+				<h1>Welcome, guest!</h1>
+				<form action="/api/auth/sign-in-with-otp" method="post">
+					<label for="email">Email</label>
+					<input type="email" name="email" id="email" />
+					<button type="submit">Login</button>
+				</form>
+				<hr />
+				OR
+				<hr />
+				<form action="/api/auth/signin" method="post">
+					<button value="google" name="provider" type="submit">
+						Sign in with Google
+					</button>
+				</form>
+			</div>
+		)
+	}
 </Layout>

@@ -1,4 +1,3 @@
-// src/middleware.ts
 import { createServerClient, type CookieOptions } from "@supabase/ssr";
 import { defineMiddleware } from "astro:middleware";
 

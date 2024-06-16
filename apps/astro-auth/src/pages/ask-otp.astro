@@ -1,14 +1,6 @@
 ---
 import Layout from "../layouts/Layout.astro";
-
-const { cookies, redirect } = Astro;
-
-const accessToken = cookies.get("sb-access-token");
-const refreshToken = cookies.get("sb-refresh-token");
-
-if (accessToken && refreshToken) {
-	return redirect("/");
-}
+const { cookies } = Astro;
 
 const otpEmail = cookies.get("otp-email");
 cookies.delete("otp-email", {
@@ -19,11 +11,11 @@ cookies.delete("otp-email", {
 <Layout title="Verify One-Time-Password">
 	<h1>please check your email and spam folder</h1>
 	<h2>and confirm your One-Time-Password</h2>
-	<form action="/api/auth/confirm-otp" method="post">
+	<form action="/api/auth/verify-otp" method="post">
 		<label for="email">Email</label>
 		<input type="email" name="email" id="email" value={otpEmail?.value} />
-		<label for="password">One-Time-Password</label>
-		<input type="password" name="password" id="password" />
+		<label for="otp">One-Time-Password</label>
+		<input type="text" name="otp" id="otp" />
 		<button type="submit">confirm</button>
 	</form>
 </Layout>

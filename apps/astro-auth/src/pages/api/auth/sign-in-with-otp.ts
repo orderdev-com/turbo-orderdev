@@ -1,16 +1,13 @@
 import type { APIRoute } from "astro";
-// import { supabase } from "../../../lib/supabase";
-// import type { Provider } from "@supabase/supabase-js";
 
 export const POST: APIRoute = async ({ request, cookies, redirect, url, locals }) => {
     const formData = await request.formData();
     const email = formData.get("email")?.toString();
-
     if (!email) {
         return new Response("Email is required", { status: 400 });
     }
 
-    const { data, error } = await locals.supabase.auth.signInWithOtp({
+    const { error } = await locals.supabase.auth.signInWithOtp({
         email,
         options: {
             // set this to false if you do not want the user to be automatically signed up

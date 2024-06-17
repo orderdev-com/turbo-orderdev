@@ -1,2 +1,3 @@
 TODO
-- Magic password email template: remove click to login link. remove supabase middleware authCode param
+- Magic password email template: remove click to login link. 
+- Remove supabase middleware authCode param

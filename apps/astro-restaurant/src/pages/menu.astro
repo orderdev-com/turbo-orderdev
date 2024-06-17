@@ -9,6 +9,8 @@ const baseUrl = isDev
 
 const loginHref =
 	baseUrl + `/set-referer?ref=${encodeURIComponent(Astro.url.href)}`;
+
+const { data } = await Astro.locals.supabase.auth.getSession();
 ---
 
 <Layout title="menu">
@@ -28,4 +30,9 @@ const loginHref =
 			</div>
 		)
 	}
+	<hr />
+	<pre>
+	Session: 
+	{ JSON.stringify(data, null, 2) }
+	</pre>
 </Layout>

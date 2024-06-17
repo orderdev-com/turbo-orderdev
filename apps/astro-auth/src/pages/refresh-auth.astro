@@ -1,0 +1,19 @@
+---
+const { data: sessionDataBefore } =
+	await Astro.locals.supabase.auth.getSession();
+
+await Astro.locals.supabase.auth.refreshSession();
+
+const { data: sessionDataAfter } =
+	await Astro.locals.supabase.auth.getSession();
+---
+
+<pre>
+Before: 
+{ JSON.stringify(sessionDataBefore, null, 2) }
+</pre>
+<hr />
+<pre>
+After: 
+{ JSON.stringify(sessionDataAfter, null, 2) }
+</pre>

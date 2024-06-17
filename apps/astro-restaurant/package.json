@@ -1,0 +1,23 @@
+{
+	"name": "astro-restaurant",
+	"type": "module",
+	"version": "0.0.1",
+	"scripts": {
+		"dev": "astro dev --port=4320 --host=restaurant.orderdev.local --open",
+		"start": "astro dev",
+		"build": "astro check && astro build",
+		"preview": "astro preview",
+		"astro": "astro"
+	},
+	"dependencies": {
+		"@astrojs/check": "^0.7.0",
+		"@astrojs/node": "^8.3.0",
+		"@astrojs/svelte": "^5.5.0",
+		"@repo/ui": "workspace:*",
+		"@supabase/ssr": "^0.3.0",
+		"@supabase/supabase-js": "^2.43.4",
+		"astro": "^4.10.2",
+		"svelte": "^4.2.18",
+		"typescript": "^5.4.5"
+	}
+}

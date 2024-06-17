@@ -48,6 +48,36 @@ importers:
         specifier: ^5.4.5
         version: 5.4.5
 
+  apps/astro-restaurant:
+    dependencies:
+      '@astrojs/check':
+        specifier: ^0.7.0
+        version: 0.7.0(typescript@5.4.5)
+      '@astrojs/node':
+        specifier: ^8.3.0
+        version: 8.3.0(astro@4.10.2)
+      '@astrojs/svelte':
+        specifier: ^5.5.0
+        version: 5.5.0(astro@4.10.2)(svelte@4.2.18)(typescript@5.4.5)(vite@5.3.1)
+      '@repo/ui':
+        specifier: workspace:*
+        version: link:../../packages/ui
+      '@supabase/ssr':
+        specifier: ^0.3.0
+        version: 0.3.0(@supabase/supabase-js@2.43.4)
+      '@supabase/supabase-js':
+        specifier: ^2.43.4
+        version: 2.43.4
+      astro:
+        specifier: ^4.10.2
+        version: 4.10.2(typescript@5.4.5)
+      svelte:
+        specifier: ^4.2.18
+        version: 4.2.18
+      typescript:
+        specifier: ^5.4.5
+        version: 5.4.5
+
   apps/hono-api:
     dependencies:
       '@hono/node-server':

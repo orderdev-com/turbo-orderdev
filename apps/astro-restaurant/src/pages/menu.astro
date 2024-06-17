@@ -1,0 +1,31 @@
+---
+import Layout from "../layouts/Layout.astro";
+import isDev from "../lib/isDev";
+const user = Astro.locals.user;
+
+const baseUrl = isDev
+	? "http://auth.orderdev.local:4321"
+	: "https://auth.orderdev.com";
+
+const loginHref =
+	baseUrl + `/set-referer?ref=${encodeURIComponent(Astro.url.href)}`;
+---
+
+<Layout title="menu">
+	<h1>Menu</h1>
+	{
+		user && (
+			<div>
+				<p>Welcome {user.email}!</p>
+			</div>
+		)
+	}
+
+	{
+		!user && (
+			<div>
+				<a href={loginHref}>Login</a>
+			</div>
+		)
+	}
+</Layout>

@@ -1,0 +1,15 @@
+---
+const referer = Astro.request.headers.get("referer");
+
+var ref = decodeURIComponent(Astro.url.searchParams.get("ref") || "");
+
+if (ref && referer && ref.includes(referer)) {
+	Astro.cookies.set("last-referer", ref, { path: "/" });
+	return Astro.redirect("/");
+}
+---
+
+<div>
+	<p style="color:red">Error: No referer available in the request headers!</p>
+	<a href="#" onclick="history.back();">Go back</a>
+</div>

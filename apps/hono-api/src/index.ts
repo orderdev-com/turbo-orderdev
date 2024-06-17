@@ -1,43 +1,19 @@
 import { serve } from '@hono/node-server'
 import { Hono } from 'hono'
-import { errors, jwtVerify } from "jose";
-const secret = new TextEncoder().encode(process.env.SUPABASE_JWT_SECRET);
+import { JWTResult, verfyJWT } from './middlewares/jwt'
 
 
 console.log("process.env.SUPABASE_JWT_SECRET")
 console.log(process.env.SUPABASE_JWT_SECRET)
 
-const app = new Hono()
-
-async function verifyJWT(jwt: string) {
-  try {
-    const jwtVerifyResult = await jwtVerify(jwt, secret);
-    console.log("jwtVerifyResult");
-    console.log(jwtVerifyResult);
-    return {
-      status: "authorized",
-      payload: jwtVerifyResult.payload,
-      msg: "successfully verified auth token",
-    } as const;
-  } catch (err) {
-    console.log("jwtVerify error");
-    console.log(err);
-    if (err instanceof errors.JOSEError) {
-      return { status: "error", msg: err.message } as const;
-    }
-
-    console.debug(err);
-    return { status: "error", msg: "could not validate auth token" } as const;
-  }
+type Variables = {
+  jwtResult: JWTResult
 }
+const app = new Hono<{ Variables: Variables }>()
+app.use(verfyJWT);
 
 app.get('/', async (c) => {
-  // const jwt = c.req.header('jwt');
-  const jwt = c.req.query('jwt') || c.req.header('jwt') || '';
-  const jwtVerifyResult = await verifyJWT(jwt);
-  console.log("jwtVerifyResult");
-  console.log(jwtVerifyResult);
-  return c.text(`${JSON.stringify(jwtVerifyResult, null, 2)}`)
+  return c.text(`${JSON.stringify(c.get('jwtResult'), null, 2)}`)
 })
 
 const port = 3000

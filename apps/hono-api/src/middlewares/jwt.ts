@@ -1,5 +1,7 @@
 import { createMiddleware } from 'hono/factory'
 import { errors, jwtVerify } from "jose";
+import { createClient } from "@supabase/supabase-js";
+
 
 const secret = new TextEncoder().encode(process.env.SUPABASE_JWT_SECRET);
 
@@ -28,10 +30,25 @@ async function checkJWT(jwt: string) {
 export const verfyJWT = createMiddleware(async (c, next) => {
     const jwtToken = c.req.query('jwt') || c.req.header('jwt') || null;
     if (jwtToken) {
-        const jwtResult = await checkJWT(jwtToken);
-        c.set('jwtResult', jwtResult);
+        const supabase = createClient(
+            process.env.SUPABASE_URL!,
+            process.env.SUPABASE_ANON_KEY!,
+            {
+                global: {
+                    headers: {
+                        'Authorization': `Bearer ${jwtToken}`
+                    }
+                }
+            }
+        );
+
+        c.set('jwtResult', await checkJWT(jwtToken));
+        c.set('supabaseUser', (await supabase.auth.getUser()).data.user);
+        // c.set('supabaseUser', (await supabase.auth.getUser(jwtToken)).data.user); // or add JWT inside getUser
+        c.set('supabaseSession', (await supabase.auth.getSession()).data.session);
     } else {
         c.set('jwtResult', null);
+        c.set('supabaseUser', null);
     }
     await next()
 })

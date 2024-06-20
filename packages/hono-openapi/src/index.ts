@@ -1,8 +1,11 @@
 import { serve } from "@hono/node-server";
 import { swaggerUI } from "@hono/swagger-ui";
-import { OpenAPIHono } from "@hono/zod-openapi";
+import { OpenAPIHono, createRoute } from "@hono/zod-openapi"; // <- add createRoute
+import { z } from "zod"; // <- add zod
+import { app as appFoo } from "./foo"; // <- import route here
 
 const app = new OpenAPIHono();
+app.route("/foo", appFoo);
 
 // The openapi.json will be available at /doc
 app.doc("/doc", {
@@ -12,6 +15,30 @@ app.doc("/doc", {
     title: "My API",
   },
 });
+
+// basic route
+// ------ added code -------
+const basicRoute = createRoute({
+  method: "get",
+  path: "/basic/",
+  responses: {
+    200: {
+      content: {
+        "application/json": {
+          schema: z.object({
+            hello: z.string(),
+          }),
+        },
+      },
+      description: "say hello",
+    },
+  },
+});
+
+app.openapi(basicRoute, (c) => {
+  return c.json({ hello: "world" }, 200);
+});
+// ------ end added code -------
 
 // swagger ui doc will be available at {server url}/ui
 // fell free to change the url

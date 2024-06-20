@@ -1,3 +1,12 @@
 TODO
+- test drizzle orm 
+
 - Magic password email template: remove click to login link. 
 - Remove supabase middleware authCode param
+
+
+
+
+CANCELLED
+- (I do not like anon key in the clientside) Move sb auth to client side, use auth site for only oauth callbacks,
+serverside auth does not required for now.

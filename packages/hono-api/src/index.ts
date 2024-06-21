@@ -4,7 +4,7 @@ import { Hono } from 'hono'
 import { JWTResult, verfyJWT } from './middlewares/jwt'
 import hello from './hello'
 import hellokerem from './hellokerem'
-import { usersApp, openapiApp } from './users'
+import { usersApp } from './users'
 
 
 console.log("process.env.SUPABASE_JWT_SECRET")
@@ -53,7 +53,6 @@ const routes = app.basePath('/api')
   .route('/hello', hello)
   .route('/hellokerem', hellokerem)
   .route('/users', usersApp)
-  .route('/openapi', openapiApp)
 
 export type AppType = typeof routes
 

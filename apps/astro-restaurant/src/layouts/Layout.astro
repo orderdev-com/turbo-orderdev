@@ -1,14 +1,36 @@
-<div>
-	<a href="/">home</a>
-	<a href="/menu">menu</a>
-</div>
-<hr />
+---
+globalThis.jwtTokenValue = Astro.locals.jwtTokenValue;
+import client from "../lib/apiClient";
+const res = await client.api.users.$get();
+const data = await res.json();
 
-<script src="./apihelper.ts"></script>
+// const allCookies = Astro.request.headers.get('cookie')
+// console.log("allCookies");
+// console.log(allCookies);
+---
 
-<button id="test-api">API TEST</button>
-<button id="test-api-2">API TEST222</button>
+<head>
+	<meta session-jwt-token-value={globalThis.jwtTokenValue} />
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>Document</title>
+</head>
+<body>
+	<div>
+		<a href="/">home</a>
+		<a href="/menu">menu</a>
+	</div>
+	<hr />
 
-<hr />
+	<script src="./apihelper.ts"></script>
 
-<slot />
+	<button id="test-api">API TEST</button>
+	<button id="test-api-2">API TEST222</button>
+
+	<hr />
+
+	<slot />
+
+	<pre>{ JSON.stringify(data, null, 2) }</pre>
+	<!-- <pre>{ JSON.stringify(data, null, 2) }</pre> -->
+</body>

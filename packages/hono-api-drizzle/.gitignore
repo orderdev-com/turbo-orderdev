@@ -1,3 +1,7 @@
+*.db
+.env
+dist
+
 # dev
 .yarn/
 !.yarn/releases

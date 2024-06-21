@@ -3,8 +3,9 @@
 	"type": "module",
 	"version": "0.0.1",
 	"scripts": {
-		"dev": "astro dev --port=4320 --host=restaurant.orderdev.local --open",
+		"dev": "run-s wait-api-port && astro dev --port=4320 --host=restaurant.orderdev.local --open",
 		"start": "astro dev",
+		"wait-api-port": "wait-on tcp:3000",
 		"build": "astro check && astro build",
 		"preview": "astro preview",
 		"astro": "astro"
@@ -14,7 +15,7 @@
 		"@astrojs/node": "^8.3.0",
 		"@astrojs/svelte": "^5.5.0",
 		"@repo/ui": "workspace:*",
-		"hono-api": "workspace:*",
+		"hono-api-drizzle": "workspace:*",
 		"@supabase/ssr": "^0.3.0",
 		"hono": "^4.4.6",
 		"@supabase/supabase-js": "^2.43.4",

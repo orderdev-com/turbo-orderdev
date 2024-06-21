@@ -13,6 +13,12 @@ add hosts file entries
 127.0.0.1 restaurant3.orderdev.local
 ```
 
+turso CLI required for local development
+
+```
+turso dev --db-file ./turso-local/db.sqlite
+```
+
 google oauth Authorized redirect URIs
 
 ```

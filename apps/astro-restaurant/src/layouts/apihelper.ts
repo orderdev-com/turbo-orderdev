@@ -1,21 +1,9 @@
-import type { AppType } from 'hono-api/src/index'
-import { hc } from 'hono/client'
-
-const client = hc<AppType>('http://api.orderdev.local:3000/', {
-    headers() {
-        // generate random token
-        const token = Math.random().toString(36) + Math.random().toString(36) + Math.random().toString(36) + Math.random().toString(36)//.substring(7);
-        return {
-            "Authorization": `Bearer ${token}`
-        };
-    },
-});
+import client from '../lib/apiClient'
 
 export const testApiCall = async function () {
     // client.api.users
     const res = await client.api.users.$post({
         json: {
-            id: '1003',
             name: 'kerem',
             email: 'kerem@example.com'
         }
@@ -53,12 +41,13 @@ export const testApiCall = async function () {
     // }
 }
 export const testApiCall2 = async function () {
-    const res = await client.api.users.$get();
+    const res = await client.api.users.$get()
     console.log("res:👇")
     console.log(res)
     if (res.ok) {
         const data = await res.json()
         console.log(data)
+        console.log(data.supabaseUser)
     }
 }
 

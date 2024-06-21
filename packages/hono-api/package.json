@@ -2,12 +2,12 @@
 	"name": "hono-api",
 	"type": "module",
 	"scripts": {
-		"dev": "dotenv -e ../../.env -- tsx watch src/index.ts",
+		"_dev": "run-s wait-turso-port && echo 'TURSO READY!!!!!!!!' && dotenv -e ../../.env -- tsx watch src/index.ts",
+		"wait-turso-port": "wait-on tcp:8080",
 		"build": "rm -rf dist && ncc build src/index.ts -o dist",
 		"start": "dotenv -e ../../.env -- node dist/index.js",
 		"db:generate": "drizzle-kit generate",
-		"db:migrate": "drizzle-kit migrate",
-		"db:migrate:prod": "drizzle-kit migrate --config=prod.drizzle.config.ts",
+		"db:migrate": "dotenv -e ../../.env -- drizzle-kit migrate",
 		"studio": "pnpm drizzle-kit studio"
 	},
 	"devDependencies": {

@@ -2,8 +2,9 @@ import { serve } from '@hono/node-server'
 import { cors } from 'hono/cors'
 import { Hono } from 'hono'
 import { JWTResult, verfyJWT } from './middlewares/jwt'
-import { zValidator } from '@hono/zod-validator'
-import { z } from 'zod'
+import hello from './hello'
+import hellokerem from './hellokerem'
+import users from './users'
 
 
 console.log("process.env.SUPABASE_JWT_SECRET")
@@ -48,27 +49,9 @@ app.use(cors({
   // exposeHeaders?: string[];
 }))
 
-const route = app.get(
-  '/hello',
-  zValidator(
-    'query',
-    z.object({
-      name: z.string()
-    })
-  ),
-  (c) => {
-    const { name } = c.req.valid('query')
-    if (!name) {
-      return c.json({
-        error: 'Name is required!'
-      }, 500) // status is typed with hono
-    }
-    return c.json({
-      message: `Hello ${name}!`
-    }, 200)
-  }
-)
-export type AppType = typeof route
+const routes = app.basePath('/api').route('/hello', hello).route('/hellokerem', hellokerem).route('/users', users)
+
+export type AppType = typeof routes
 
 app.get('/', async (c) => {
   return c.text(`

@@ -89,6 +89,12 @@ importers:
       '@hono/node-server':
         specifier: ^1.11.3
         version: 1.11.3
+      '@hono/swagger-ui':
+        specifier: ^0.3.0
+        version: 0.3.0(hono@4.4.6)
+      '@hono/zod-openapi':
+        specifier: ^0.14.5
+        version: 0.14.5(hono@4.4.6)(zod@3.23.8)
       '@hono/zod-validator':
         specifier: ^0.2.2
         version: 0.2.2(hono@4.4.6)(zod@3.23.8)
@@ -185,7 +191,6 @@ packages:
     dependencies:
       openapi3-ts: 4.3.3
       zod: 3.23.8
-    dev: false
 
   /@astrojs/check@0.7.0(typescript@5.4.5):
     resolution: {integrity: sha512-UTqwOeKNu9IYZmJXEeWnQuTdSd/pX58Hl4TUARsMlT97SVDL//kLBE4T/ctxRz6J573N87oE5ddtW/uOOnQTug==}
@@ -1216,6 +1221,14 @@ packages:
     engines: {node: '>=18.14.1'}
     dev: false
 
+  /@hono/swagger-ui@0.3.0(hono@4.4.6):
+    resolution: {integrity: sha512-2Hp7XYFx5wDJoc6gKJAnV7RA5TWYgYl2G1k5b3BlaF6uxsePgqqCBkxhbJPe3oPu2XRB4Bsm2V7Dp9jq8LI+dg==}
+    peerDependencies:
+      hono: '*'
+    dependencies:
+      hono: 4.4.6
+    dev: true
+
   /@hono/swagger-ui@0.3.0(hono@4.4.7):
     resolution: {integrity: sha512-2Hp7XYFx5wDJoc6gKJAnV7RA5TWYgYl2G1k5b3BlaF6uxsePgqqCBkxhbJPe3oPu2XRB4Bsm2V7Dp9jq8LI+dg==}
     peerDependencies:
@@ -1223,6 +1236,19 @@ packages:
     dependencies:
       hono: 4.4.7
     dev: false
+
+  /@hono/zod-openapi@0.14.5(hono@4.4.6)(zod@3.23.8):
+    resolution: {integrity: sha512-+CXmjUlWSvYd1dDUcq2umdCD5ReKpygIIsT8rAWYEM0EKFQOqg1w1y8SvWfwrP0dL8pkSZmcRatMjH9vPvzoGg==}
+    engines: {node: '>=16.0.0'}
+    peerDependencies:
+      hono: '>=4.3.6'
+      zod: 3.*
+    dependencies:
+      '@asteasolutions/zod-to-openapi': 7.1.1(zod@3.23.8)
+      '@hono/zod-validator': 0.2.2(hono@4.4.6)(zod@3.23.8)
+      hono: 4.4.6
+      zod: 3.23.8
+    dev: true
 
   /@hono/zod-openapi@0.14.5(hono@4.4.7)(zod@3.23.8):
     resolution: {integrity: sha512-+CXmjUlWSvYd1dDUcq2umdCD5ReKpygIIsT8rAWYEM0EKFQOqg1w1y8SvWfwrP0dL8pkSZmcRatMjH9vPvzoGg==}
@@ -4183,7 +4209,6 @@ packages:
     resolution: {integrity: sha512-LKkzBGJcZ6wdvkKGMoSvpK+0cbN5Xc3XuYkJskO+vjEQWJgs1kgtyUk0pjf8KwPuysv323Er62F5P17XQl96Qg==}
     dependencies:
       yaml: 2.4.5
-    dev: false
 
   /ora@8.0.1:
     resolution: {integrity: sha512-ANIvzobt1rls2BDny5fWZ3ZVKyD6nscLvfFRpQgfWsythlcsVUC9kL0zq6j2Z5z9wwp1kd7wpsD/T9qNPVLCaQ==}
@@ -5595,7 +5620,6 @@ packages:
     resolution: {integrity: sha512-aBx2bnqDzVOyNKfsysjA2ms5ZlnjSAW2eG3/L5G/CSujfjLJTJsEw1bGw8kCf04KodQWk1pxlGnZ56CRxiawmg==}
     engines: {node: '>= 14'}
     hasBin: true
-    dev: false
 
   /yargs-parser@21.1.1:
     resolution: {integrity: sha512-tVpsJW7DdjecAiFpbIB1e3qxIQsE6NoPc5/eTdrbbIC4h0LVsWhnoa3g+m2HclBIujHzsxZ4VJVA+GUuc2/LBw==}

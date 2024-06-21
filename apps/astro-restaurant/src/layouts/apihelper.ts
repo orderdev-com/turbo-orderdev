@@ -12,24 +12,45 @@ const client = hc<AppType>('http://api.orderdev.local:3000/', {
 });
 
 export const testApiCall = async function () {
-
-    const res = await client.api.hello.$get({
-        query: {
+    // client.api.users
+    const res = await client.api.users.$post({
+        json: {
+            id: '1003',
             name: 'kerem',
-        },
-    })
-    console.log("res:👇");
-    console.log(res);
+            email: 'kerem@example.com'
+        }
+    });
 
-    if (res.status === 500) { // status is typed with hono
-        const data = await res.json()
-        console.log(data)
-    }
+    console.log("res:👇")
+    console.log(res);
 
     if (res.ok) {
         const data = await res.json()
-        console.log(data.message)
+        console.log(data)
+    } else {
+        const data = await res.json()
+        console.warn(data)
     }
+
+
+
+    // const res = await client.api.hello.$get({
+    //     query: {
+    //         name: 'kerem',
+    //     },
+    // })
+    // console.log("res:👇");
+    // console.log(res);
+
+    // if (res.status === 500) { // status is typed with hono
+    //     const data = await res.json()
+    //     console.log(data)
+    // }
+
+    // if (res.ok) {
+    //     const data = await res.json()
+    //     console.log(data.message)
+    // }
 }
 export const testApiCall2 = async function () {
     const res = await client.api.users.$get();
